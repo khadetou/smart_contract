@@ -2,6 +2,8 @@
 
 pragma solidity ^0.8.0;
 
+import "hardhat/console.sol";
+
 contract Transactions {
     uint256 transactionCount;
 
@@ -25,13 +27,13 @@ contract Transactions {
 
     TransferStruct[] transactions;
 
-    function addToBlockChain(
+    function addToBlockchain(
         address payable receiver,
         uint256 amount,
         string memory message,
         string memory keyword
     ) public {
-        transactionCount++;
+        transactionCount += 1;
         transactions.push(
             TransferStruct(
                 msg.sender,
@@ -42,6 +44,7 @@ contract Transactions {
                 keyword
             )
         );
+
         emit Transfer(
             msg.sender,
             receiver,
